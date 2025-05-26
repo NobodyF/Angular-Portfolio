@@ -1,0 +1,58 @@
+<div id="contact" class="section">
+  <h1>Let's stay in touch.</h1>
+  <div class="contact-form-container">
+    <form (ngSubmit)="openMailClient(contactForm.value)"
+          #contactForm="ngForm"
+          class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            ngModel
+            placeholder="Fill your name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            ngModel
+            placeholder="Fill your email"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          ngModel
+          placeholder="Subject"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea
+          id="message"
+          name="message"
+          ngModel
+          rows="4"
+          placeholder="Write your message here"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" [disabled]="contactForm.invalid">
+        Send via Mail App
+      </button>
+    </form>
+  </div>
+</div>

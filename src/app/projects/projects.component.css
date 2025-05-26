@@ -1,0 +1,59 @@
+#projects {
+  position: relative; /* Enables absolute positioning of the SVG */
+  background-color: #313743;
+  font-family: 'Cavalier', sans-serif; /* Set the base font for the entire document */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligns items to the start of the flex container */
+  padding: 0 12vw; /* Adds some space around the content */
+  height: 100vh;
+}
+
+.section {
+  color: #FFFFFF;
+  font-family: inherit; /* Inherit the font from body */
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+  max-width: 600px; /* Restricts the width of the text container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20;
+  align-items: flex-start; /* Aligns text to the left */
+  z-index: 1; /* Ensures text is above the SVG */
+  margin-right: auto; /* Aligns container to the left side */
+}
+
+h1 {
+  font-size: 48px;
+  margin-bottom: 24px;
+  color: #ccf381;
+}
+
+p {
+  font-size: 18px;
+  max-width: 90%; /* Allows the text to take full width of the container */
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.blocksvg {
+  position: absolute;
+  width: 1400px;
+  height: 1400px;
+
+  right: 5vw; /* Adjusts the distance from the right */
+  opacity: 1; /* Makes the SVG less intrusive */
+  z-index: 0; /* Ensures SVG is behind the text */
+}

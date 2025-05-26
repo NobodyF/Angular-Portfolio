@@ -1,0 +1,67 @@
+/* Styling for About Section */
+#about {
+  position: relative;
+  background-color: #f9f9f9;
+  padding: 50px;
+  height: 100vh; /* Full height */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes text to opposite sides */
+  overflow: hidden;
+}
+
+/* Left-side text */
+.left-text {
+  position: absolute;
+  left: 10%;
+  top: 25%;
+  font-size: 20px;
+  color: #4831d4;
+  max-width: 30%;
+  text-align: justify;
+  hyphens: auto;
+  word-break: break-word;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+/* Right-side text */
+.right-text {
+  position: absolute;
+  right: 10%;
+  bottom: 25%;
+  font-size: 20px;
+  color: #4831d4;
+  max-width: 30%;
+  text-align: start;
+  hyphens: auto;
+  word-break: break-word;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+
+/* Headings */
+.left-text h1, .right-text h1 {
+  font-size: 60px;
+  margin-bottom: 10px;
+  font-family: 'Arial-label', Courier, monospace;
+  color: #313743;
+}
+
+/* Paragraph Styling */
+.left-text h2, .right-text h2 {
+  font-size: 20px;
+  color: #8a7d88;
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 10px;
+}
+
+/* SVG Styling */
+.dotsvg {
+  position: absolute;
+  width: 400px;
+  top: 20%;
+  right: 15%;
+  opacity: 1;
+}
