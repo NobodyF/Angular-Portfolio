@@ -1,0 +1,6 @@
+<div class="hyper-text" (mouseenter)="onMouseEnter()">
+    <span *ngFor="let letter of displayText" [ngClass]="{'space': letter === ' '}">
+      {{ letter }}
+    </span>
+  </div>
+  

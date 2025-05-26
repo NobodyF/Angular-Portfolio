@@ -1,0 +1,11 @@
+.hyper-text {
+    overflow: hidden;
+    display: flex;
+    cursor: default;
+    font-family: 'Courier New', Courier, monospace; /* or any other mono font */
+  }
+  
+  .space {
+    width: 1em; /* Adjust for spacing similar to a blank space */
+  }
+  
