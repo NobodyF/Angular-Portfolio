@@ -57,3 +57,52 @@ p {
   opacity: 1; /* Makes the SVG less intrusive */
   z-index: 0; /* Ensures SVG is behind the text */
 }
+
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+  #projects {
+    flex-direction: column;
+    height: auto;
+    padding: 0 4vw;
+    align-items: stretch;
+  }
+  .section {
+    flex-direction: column;
+    padding: 24px 0;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .container {
+    max-width: 100vw;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    padding: 0 4vw;
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 8vw;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  p {
+    font-size: 4vw;
+    max-width: 100vw;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .title {
+    font-size: 6vw;
+    text-align: center;
+  }
+  .blocksvg {
+    width: 80vw;
+    height: 80vw;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    position: static;
+    display: block;
+  }
+}
