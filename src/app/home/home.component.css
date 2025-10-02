@@ -1,5 +1,8 @@
 .content {
     position: relative; /* Ensure relative positioning for absolute children */
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
 }
 
 .main-image {
@@ -106,4 +109,73 @@
     width: 100%;
     height: 100%;
     text-decoration: none; /* Remove underline on links */
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        max-width: 100vw;
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+    .main-image {
+        position: static;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 20px auto;
+        left: unset;
+        top: unset;
+        transform: none;
+    }
+    #home .content h1 {
+        font-size: 32px;
+        margin-left: 0;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    #home .content h2 {
+        font-size: 22px;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    #home .content p {
+        font-size: 16px;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .content {
+        padding: 0 4px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    .homesvg {
+        width: 90vw;
+        right: 0;
+        bottom: 10vh;
+    }
+    .home {
+        flex-direction: column;
+        height: auto;
+        padding-top: 40px;
+    }
+    .social-icons {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
 }
