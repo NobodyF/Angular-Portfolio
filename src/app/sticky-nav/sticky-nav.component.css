@@ -47,6 +47,7 @@
   transform: scale(1.1); /* Scale the icon on hover */
 }
 
+<<<<<<< HEAD
 
 @media (max-width: 768px) {
   .sticky-nav {
@@ -66,5 +67,42 @@
 
   .sticky-nav ul li a[href^="#"]:hover {
     transform: scale(1.2);    /* slightly bigger hover effect for small squares */
+=======
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+  .sticky-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: unset;
+    right: unset;
+    width: 100vw;
+    height: auto;
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+    z-index: 9999;
+    transform: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+  }
+  .sticky-nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  .sticky-nav ul li {
+    margin-bottom: 0;
+  }
+  .sticky-nav ul li a .square {
+    width: 32px;
+    height: 32px;
+>>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
   }
 }

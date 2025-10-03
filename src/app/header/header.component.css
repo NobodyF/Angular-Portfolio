@@ -49,6 +49,7 @@ header {
     width: 150px; /* Adjust the size as needed */
     height: auto; /* Maintain aspect ratio */
   }
+<<<<<<< HEAD
   
 
 @media (max-width: 768px) {
@@ -86,3 +87,42 @@ header {
     font-size: 28px;           /* smaller header if used inside header */
   }
 }
+=======
+
+  /* Responsive styles for mobile */
+  @media (max-width: 600px) {
+    header {
+      width: 100vw;
+      padding: 16px 4vw;
+      box-sizing: border-box;
+    }
+    .header-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    h1 {
+      font-size: 7vw;
+      margin-bottom: 8px;
+    }
+    nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+      align-items: flex-start;
+    }
+    nav ul li {
+      display: block;
+      margin-right: 0;
+      margin-bottom: 4px;
+    }
+    .nicksvg {
+      width: 80px;
+      margin-bottom: 8px;
+    }
+  }
+  
+>>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
