@@ -2,11 +2,6 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-<<<<<<< HEAD
-=======
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: #f0f0f0;
->>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
 }
 
 .home-container {
@@ -95,47 +90,11 @@ html, body {
 img, video {
   max-width: 100%;
   height: auto;
-<<<<<<< HEAD
-=======
-  display: block;
->>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
 }
 
 
 @media (max-width: 600px) {
-<<<<<<< HEAD
   .two-column { flex-direction: column; }
-=======
-  html, body {
-    width: 100vw;
-    max-width: 100vw;
-    overflow-x: hidden;
-  }
-  .container, .content {
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
-    padding: 0 8px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .two-column {
-    flex-direction: column;
-    width: 100%;
-    max-width: 100vw;
-  }
-  h1, h2, h3, h4, h5, h6, p {
-    word-break: break-word;
-    text-align: center;
-  }
-  img, video {
-    max-width: 90vw;
-    height: auto;
-    margin: 0 auto;
-  }
->>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
 }
 
 
