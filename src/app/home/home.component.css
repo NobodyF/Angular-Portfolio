@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* === Container & Squares === */
 .home-container {
   position: relative;
@@ -209,4 +210,186 @@
     bottom: 42vh;     /* Adjust distance from bottom */
     right: -10vw;      /* Adjust distance from right */
   }
+=======
+.content {
+    position: relative; /* Ensure relative positioning for absolute children */
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+.main-image {
+    position: absolute;
+    left: 70%; /* Adjust the left position */
+    top: -40px; /* Adjust the bottom position */
+    transform: translateX(-50%); /* Center horizontally */
+    width: 400px; /* Adjust the width */
+    height: 400px; /* Adjust the height */
+    border-radius: 50%; /* Make the container round */
+    overflow: hidden; /* Ensure content outside the border is hidden */
+    border: 4px solid #ffffff; /* Add border styling */
+}
+
+.main-image img {
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+
+#home .content h1 {
+    font-size: 70px;
+    font-weight: bold;
+    color: #ccf381; /* Adjust color as needed */
+    margin-bottom: 30px;
+    margin-left: 180px;
+    margin-top: 100px;
+}
+
+#home .content h2 {
+    font-size: 40px;
+    font-weight: normal;
+    color: #ffffff; /* Adjust color as needed */
+    margin-bottom: 30px;
+    margin-left: 180px;
+    margin-top: 100px;
+}
+
+#home .content p {
+    font-size: 30px;
+    color: #ccf381; /* Adjust color as needed */
+    line-height: 1;
+    margin-bottom: 30px;
+    margin-left: 180px;
+    margin-top: 100px;
+}
+
+.homesvg {
+    position: absolute; /* Absolute positioning within #about */
+    width: 650px;
+    bottom: 35vh; /* Distance from the bottom */
+    right: 25vh;
+  }
+
+  .home {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding-top: 80px; /* Adjust for fixed header */
+  }
+  
+/* Position social icons at 80vh height and center them */
+/* Position the social icons */
+.social-icons {
+    position: absolute;
+    top: 63vh; /* Set the social icons at 80% down from the top of the viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    display: flex;
+    gap: 30px; /* Reduce the gap between icons */
+}
+
+/* Styling for each social icon */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Set the icon width */
+    height: 40px; /* Set the icon height */
+    border: 2px solid #313743; /* Border color around the square */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure the image fits within the border */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Social icon image */
+.social-icon img {
+    width: 100%; /* Make the image fill the icon container */
+    height: 100%; /* Ensure the image covers the container */
+    object-fit: cover; /* Crop the image to fit the container */
+}
+
+/* Hover effect for social icons */
+.social-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+/* Social icon link styling */
+.social-icon a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none; /* Remove underline on links */
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 600px) {
+    .container {
+        width: 100%;
+        max-width: 100vw;
+        padding: 0 8px;
+        box-sizing: border-box;
+    }
+    .main-image {
+        position: static;
+        width: 180px;
+        height: 180px;
+        margin: 0 auto 20px auto;
+        left: unset;
+        top: unset;
+        transform: none;
+    }
+    #home .content h1 {
+        font-size: 32px;
+        margin-left: 0;
+        margin-top: 30px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    #home .content h2 {
+        font-size: 22px;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    #home .content p {
+        font-size: 16px;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .content {
+        padding: 0 4px;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    .homesvg {
+        width: 90vw;
+        right: 0;
+        bottom: 10vh;
+    }
+    .home {
+        flex-direction: column;
+        height: auto;
+        padding-top: 40px;
+    }
+    .social-icons {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .social-icon {
+        width: 32px;
+        height: 32px;
+    }
+>>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
 }
