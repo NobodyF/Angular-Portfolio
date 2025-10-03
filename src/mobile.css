@@ -1,0 +1,23 @@
+/* ================= MOBILE SCALING ================= */
+@media (max-width: 768px) {
+  #home-wrapper {
+    transform: scale(0.7);
+    transform-origin: top left;
+    width: calc(100% / 0.7);
+    height: calc(100% / 0.7);
+  }
+}
+
+@media (max-width: 480px) {
+  #home-wrapper {
+    transform: scale(0.55);
+    transform-origin: top left;
+    width: calc(100% / 0.55);
+    height: calc(100% / 0.55);
+  }
+}
+
+/* Optional: allow horizontal scroll so nothing disappears */
+html, body {
+  overflow-x: auto;
+}

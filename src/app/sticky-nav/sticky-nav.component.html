@@ -1,0 +1,25 @@
+<nav class="sticky-nav">
+    <ul>
+      <li>
+        <a (click)="scrollToSection('header')" routerLink="/header" fragment="header">
+          <div id="home" class="square" [ngStyle]="{ 'background-color': activeColor }"></div>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('about')" routerLink="/about" fragment="about">
+          <div id="about" class="square" [ngStyle]="{ 'background-color': activeColor }"></div>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('projects')" routerLink="/projects" fragment="projects">
+          <div id="projects" class="square" [ngStyle]="{ 'background-color': activeColor }"></div>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('contact')" routerLink="/contact" fragment="contact">
+          <div id="contact" class="square" [ngStyle]="{ 'background-color': activeColor }"></div>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
