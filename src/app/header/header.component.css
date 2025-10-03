@@ -1,0 +1,88 @@
+header {
+    position: sticky;
+    width: 62%;
+    color: #ffffff; /* White text color */
+    padding: 40px;
+    z-index: 1000; /* Ensure the header is above other content */
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  li {
+    margin: 0;
+    font-size: 23px;
+  }
+
+  
+  h1 {
+    margin: 0;
+    font-size: 40px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  nav ul li a:hover {
+    color: #ccf381; /* Yellow text color on hover */
+  }
+  
+  .nicksvg {
+    width: 150px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+
+@media (max-width: 768px) {
+  header {
+    width: 90%;               /* fit smaller screens */
+    padding: 15px 10px;       /* reduce padding */
+  }
+
+  .header-container {
+    flex-direction: row;      /* keep logo and nav in a row */
+    justify-content: space-between; /* logo left, nav right */
+    align-items: center;
+  }
+
+  .nicksvg {
+    width: 100px;             /* smaller logo */
+    height: auto;
+  }
+
+  nav ul {
+    display: flex;             /* horizontal layout */
+    gap: 10px;                 /* reduce space between nav items */
+  }
+
+  nav ul li {
+    display: inline;
+    margin: 0;                 /* remove extra margin */
+  }
+
+  nav ul li a {
+    font-size: 14px;           /* smaller text */
+  }
+
+  h1 {
+    font-size: 28px;           /* smaller header if used inside header */
+  }
+}

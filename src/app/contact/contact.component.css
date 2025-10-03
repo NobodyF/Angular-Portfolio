@@ -1,0 +1,217 @@
+#contact {
+    background-color: #f9f9f9;
+
+    height: 100vh; /* Ensure the section only takes the viewport height */
+    display: flex;
+    font-family: 'Cavalier', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url('/assets/linesvg.svg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    overflow: hidden; /* Prevent any overflow */
+    padding: 0;
+  }
+  
+  .linesvg {
+    position: absolute; /* Absolute positioning of the SVG */
+    z-index: 0; /* Keep it in the background */
+    overflow: hidden;
+    
+  }
+  
+  .sticky-nav {
+    position: fixed; /* Ensure the navbar is fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* Ensure it stays on top of other content */
+    background-color: rgba(255, 255, 255, 0.9); /* Optional: semi-transparent background */
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: shadow for the navbar */
+  }
+  
+  .sticky-nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+  }
+  
+  .sticky-nav li {
+    padding: 10px;
+  }
+  
+  .sticky-nav a {
+    text-decoration: none;
+    color: #313743;
+    font-weight: bold;
+  }
+  
+  .sticky-nav a:hover {
+    color: #7a9eea;
+  }
+  
+  h1 {
+    font-size: 60px;
+    color: #313743;
+    font-family: inherit;
+    margin-bottom: 80px;
+  }
+  
+  /* Transparent background and no border box */
+  .contact-form-container {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    overflow-x: hidden; /* Prevent overflow */
+  }
+  
+  /* Contact form styling */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  /* Form row for aligning fields */
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    /* height: 100px; */
+    width: 100%;
+    gap: 20px;
+  }
+  
+  /* Form group for input fields */
+  .form-group {
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+  }
+  
+  /* Labels styling */
+  .form-group label {
+    display: block;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
+  /* Input and textarea styling */
+  .contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background: transparent;
+    color: #000000;
+    font-size: 20px;
+    transition: border-color 0.3s;
+    margin-bottom: 5px;
+  }
+  
+  /* Placeholder styling */
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder {
+    color: #999;
+  }
+  
+  /* Input and textarea focus state */
+  .contact-form input:focus, .contact-form textarea:focus {
+    border-bottom-color: #7a9eea;
+    outline: none;
+  }
+  
+  /* Submit button styling */
+  .contact-form button {
+    background-color: transparent; /* Transparent background */
+    color: #313743; /* Text color matching the border color */
+    padding: 15px 30px; /* Adjust padding for a square shape */
+    border: 2px solid #313743; /* Blue border */
+    border-radius: 4px; /* Slightly rounded corners */
+    font-size: 16px; /* Font size */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    margin-top: 20px;
+    text-transform: uppercase; /* Uppercase text for a more professional look */
+    font-weight: bold; /* Bold text for emphasis */
+    outline: none; /* Remove default focus outline */
+  }
+  
+  /* Submit button hover state */
+  .contact-form button:hover {
+    background-color: #313743; /* Blue background on hover */
+    color: #fff; /* White text color on hover */
+    border-color: #313743; /* Maintain border color on hover */
+    
+  }
+  
+  /* Submit button active state (optional) */
+  .contact-form button:active {
+    transform: scale(0.98); /* Slightly shrink the button when clicked */
+  }
+  
+  /* === MOBILE RESPONSIVE CONTACT SECTION === */
+@media (max-width: 768px) {
+  #contact {
+    height: auto;             /* let section grow */
+    padding: 40px 5vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: clamp(24px, 6vw, 40px); /* shrink header for mobile */
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .contact-form-container {
+    width: 100%;
+  }
+
+  .contact-form {
+    max-width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-row {
+    flex-direction: column;    /* stack name/email vertically */
+    gap: 15px;
+  }
+
+  .form-group {
+    width: 100%;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 16px;           /* shrink font size */
+  }
+
+  .contact-form button {
+    font-size: 14px;
+    padding: 12px 25px;
+  }
+
+  /* Background SVG adjustment */
+  .linesvg {
+    width: 60vw;               /* scale down */
+    max-width: 400px;
+    top: 50%;                  /* vertically center */
+    left: 50%;                 /* center horizontally */
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0.2;              /* subtle background */
+  }
+}

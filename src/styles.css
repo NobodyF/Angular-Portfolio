@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.home-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust the height to cover half of the viewport */
+}
+
+.right-square, .left-square {
+  position: absolute;
+  z-index: -1; /* Set z-index to position squares behind other content */
+  height: 100%; /* Cover the entire height of .home-container */
+}
+
+.extra-square {
+  position: absolute;
+  top: 75vh; /* Position the square just after the .home-container */
+  width: 100%; /* Fill the entire width of the viewport */
+  height: 25vh; /* Adjust the height to cover the remaining viewport height */
+  background-color: #f9f9f9; /* Lime color */
+  z-index: -1; /* Set z-index to position square behind other content */
+}
+
+.left-square {
+  top: 0;
+  left: 0;
+  width: 67%; /* Adjust the width percentage as needed */
+  background-color: #313743; /* Blue color */
+  overflow: hidden; /* Hide overflow content */
+}
+
+/* TODO: lines */
+.left-square::before,
+.left-square::after {
+  content: '';
+  position: absolute;
+  width: 150%; /* Adjust the length of the lines to ensure they extend beyond the square */
+  height: 2px; /* Adjust the thickness of the lines */
+  background-color: #FFFFFF; /* Adjust color as needed */
+}
+
+.left-square::before {
+  top: 113%; /* Position the top line */
+  left: -25%; /* Move it to the left to start from outside the square */
+  transform: rotate(-35deg); /* Rotate the line */
+}
+
+.left-square::after {
+  bottom: -5%; /* Position the bottom line */
+  left: -25%; /* Move it to the left to start from outside the square */
+  transform: rotate(-35deg); /* Rotate the line */
+}
+
+/* TODO: end for the lines */
+/* FIXME: need to fix before and after makes some bugs */
+
+
+
+
+.right-square {
+  top: 0;
+  right: 0;
+  width: 33%; /* Adjust the width percentage as needed */
+  background-color: #ccf381; /* Lime color */
+}
+
+#wrapper {
+  position: relative;
+  height: 100%; /* Ensure the wrapper fills the entire height of .home-container */
+}
+
+
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+html, body {
+  overflow: auto; /* Ensures scrolling is enabled */
+  scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+@media (max-width: 600px) {
+  .two-column { flex-direction: column; }
+}
+
+
