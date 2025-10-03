@@ -37,10 +37,6 @@
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
-<<<<<<< HEAD
-=======
-    "angular-cli-ghpages": "^2.0.3",
->>>>>>> c0c0a37d08e30d6a8dc0843bee7969a8634113ca
     "esbuild": "^0.25.0",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
