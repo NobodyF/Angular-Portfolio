@@ -162,7 +162,8 @@
   #home .content h1 {
     font-size: clamp(24px, 8vw, 50px);
     margin-left: 20px;
-    margin-top: 200px;
+    /* Scale the offset with viewport height so short screens don't overflow */
+    margin-top: clamp(80px, 24vh, 200px);
   }
 
   #home .content h2 {
@@ -175,7 +176,7 @@
     font-size: clamp(14px, 4vw, 24px);
     margin-left: 20px;
     margin-top: 20px;
-    max-width: 55%; /* keep the tagline clear of the profile photo */
+    max-width: calc(100% - 200px); /* keep the tagline clear of the 150px photo + margins */
   }
 
   /* Let the tagline wrap naturally on narrow screens */
@@ -186,9 +187,10 @@
   .main-image {
     width: 150px;
     height: 150px;
-    left: 80%;
+    left: auto;
+    right: 12px; /* keep the circle fully inside the viewport */
     top: 0;
-    transform: translateX(-50%);
+    transform: none;
   }
 
   .left-square {
@@ -210,9 +212,9 @@
   }
 
   /* === Mobile SVG adjustments === */
+  /* The 700px decorative SVG lands unpredictably over the headline and logo
+     on small screens — hide it entirely on mobile. */
   .homesvg {
-    width: 700px;     /* Shrink SVG for mobile */
-    bottom: 42vh;     /* Adjust distance from bottom */
-    right: -10vw;      /* Adjust distance from right */
+    display: none;
   }
 }

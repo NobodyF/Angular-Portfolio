@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -65,37 +65,6 @@ export class StickyNavComponent implements AfterViewInit, OnDestroy {
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }
-  }
-
-  // Snap one section per wheel gesture (0.8s cooldown to avoid skipping)
-  isScrolling = false;
-
-  @HostListener('window:wheel', ['$event'])
-  onScroll(event: WheelEvent) {
-    if (this.isScrolling) return;
-
-    this.isScrolling = true;
-    setTimeout(() => {
-      this.isScrolling = false;
-    }, 800);
-
-    if (event.deltaY > 0) {
-      this.navigateToNext();
-    } else {
-      this.navigateToPrevious();
-    }
-  }
-
-  navigateToNext() {
-    if (this.activeIndex < this.sections.length - 1) {
-      this.scrollToSection(this.sections[this.activeIndex + 1]);
-    }
-  }
-
-  navigateToPrevious() {
-    if (this.activeIndex > 0) {
-      this.scrollToSection(this.sections[this.activeIndex - 1]);
     }
   }
 

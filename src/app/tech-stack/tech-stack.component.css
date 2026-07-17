@@ -13,6 +13,18 @@
   color: #ffffff;
 }
 
+/* Decorative neural-network graphic on the right, behind the text */
+.aisvg {
+  position: absolute;
+  width: 720px;
+  max-width: 45vw;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
 .container {
   max-width: 900px;
   display: flex;
@@ -73,6 +85,14 @@ h1 {
   #stack {
     padding: 40px 6vw;
     min-height: auto;
+  }
+
+  .aisvg {
+    width: 70vw;
+    max-width: 70vw;
+    right: -10vw;
+    top: 20%;
+    opacity: 0.35; /* keep the text readable where they overlap */
   }
 
   h1 {
