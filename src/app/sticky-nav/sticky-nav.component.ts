@@ -1,5 +1,4 @@
-import { Component, HostListener, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, AfterViewInit, OnDestroy, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -7,37 +6,33 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './sticky-nav.component.html',
   styleUrls: ['./sticky-nav.component.css']
 })
-export class StickyNavComponent implements AfterViewInit {
+export class StickyNavComponent implements AfterViewInit, OnDestroy {
 
-  sections = ['header', 'about', 'projects', 'contact'];
+  sections = ['home', 'about', 'stack', 'contact'];
   activeIndex = 0;
-  activeColor = '#313743'; // Default color for active section
-  isScrolling = false; // Prevents skipping multiple pages
-  observer: IntersectionObserver | null = null; // Initialize as null
+  activeColor = '#313743';
+  observer: IntersectionObserver | null = null;
 
-  constructor(private router: Router, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.updateColor(this.sections[this.activeIndex]);
   }
 
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
-      this.initializeObservers(); // Initialize IntersectionObserver only in the browser
+      this.initializeObservers();
     }
   }
 
   initializeObservers() {
-    // Setup an observer to track which section is currently in the viewport
     const options = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.5 // Trigger when section is 50% visible
+      threshold: 0.5
     };
 
-    // Initialize the observer only if we are in the browser
     this.observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Update active section if a section is in view
           const sectionId = entry.target.id;
           this.activeIndex = this.sections.indexOf(sectionId);
           this.updateColor(sectionId);
@@ -45,7 +40,6 @@ export class StickyNavComponent implements AfterViewInit {
       });
     }, options);
 
-    // Observe all sections for intersection
     this.sections.forEach(section => {
       const element = document.getElementById(section);
       if (element && this.observer) {
@@ -55,66 +49,57 @@ export class StickyNavComponent implements AfterViewInit {
   }
 
   updateColor(section: string) {
-    // Update the color of the active navigation item
-    if (section === 'header') {
-      this.activeColor = '#313743'; // Home Color
-    } else if (section === 'about') {
-      this.activeColor = '#313743'; // About Color
-    } else if (section === 'projects') {
-      this.activeColor = '#ccf381'; // Projects Color
-    } else if (section === 'contact') {
-      this.activeColor = '#313743'; // Contact Color
-    }
+    // Dark dots on light sections, lime dots on the dark stack section
+    this.activeColor = section === 'stack' ? '#ccf381' : '#313743';
   }
 
   scrollToSection(id: string) {
-    // Scroll to the specified section and update the router path
     this.activeIndex = this.sections.indexOf(id);
-    this.router.navigate(['/', id]); // No page reload
-
-    setTimeout(() => {
+    if (isPlatformBrowser(this.platformId)) {
+      if (id === 'home') {
+        // The home section starts below the hero's top margin — go to the real top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
       const element = document.getElementById(id);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-    }, 100);
+    }
   }
+
+  // Snap one section per wheel gesture (0.8s cooldown to avoid skipping)
+  isScrolling = false;
 
   @HostListener('window:wheel', ['$event'])
   onScroll(event: WheelEvent) {
-    // Prevent scrolling multiple sections rapidly
     if (this.isScrolling) return;
 
     this.isScrolling = true;
     setTimeout(() => {
       this.isScrolling = false;
-    }, 800); // 0.8s delay to prevent rapid skips
+    }, 800);
 
     if (event.deltaY > 0) {
-      // Scroll down: Navigate to next section
       this.navigateToNext();
     } else {
-      // Scroll up: Navigate to previous section
       this.navigateToPrevious();
     }
   }
 
   navigateToNext() {
     if (this.activeIndex < this.sections.length - 1) {
-      this.activeIndex++;
-      this.scrollToSection(this.sections[this.activeIndex]);
+      this.scrollToSection(this.sections[this.activeIndex + 1]);
     }
   }
 
   navigateToPrevious() {
     if (this.activeIndex > 0) {
-      this.activeIndex--;
-      this.scrollToSection(this.sections[this.activeIndex]);
+      this.scrollToSection(this.sections[this.activeIndex - 1]);
     }
   }
 
   ngOnDestroy() {
-    // Cleanup the observer on destroy to avoid memory leaks
     if (this.observer) {
       this.observer.disconnect();
     }

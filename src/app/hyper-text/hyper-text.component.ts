@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-hyper-text',
@@ -15,9 +16,13 @@ export class HyperTextComponent implements OnInit, OnDestroy {
   intervalId: any;
   iterations = 0;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   ngOnInit() {
     this.displayText = this.text.split('');
-    if (this.animateOnLoad) {
+    // Animate in the browser only — on the server, render the final text so
+    // prerendered/SSR HTML never shows a half-scrambled snapshot.
+    if (this.animateOnLoad && isPlatformBrowser(this.platformId)) {
       this.startAnimation();
     }
   }

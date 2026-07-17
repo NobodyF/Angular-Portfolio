@@ -15,13 +15,25 @@
   margin-bottom: 20px;
 }
 
-.sticky-nav ul li a {
-  text-decoration: none;
+.nav-dot {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   display: block;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Style for the square icons */
-.sticky-nav ul li a .square {
+.nav-dot:hover {
+  transform: scale(1.1);
+}
+
+.nav-dot:focus-visible {
+  outline: 2px solid #ccf381;
+  outline-offset: 3px;
+}
+
+.nav-dot .square {
   width: 20px;
   height: 20px;
   background-color: #4831d4;
@@ -29,42 +41,23 @@
   position: relative;
 }
 
-.svg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Smooth scrolling effect */
-.sticky-nav ul li a[href^="#"] {
-  transition: all 0.3s ease-in-out;
-}
-
-.sticky-nav ul li a[href^="#"]:hover {
-  transform: scale(1.1); /* Scale the icon on hover */
-}
-
-
 @media (max-width: 768px) {
   .sticky-nav {
-    top: 50%;               /* keep vertical centering */
-    right: 3%;               /* keep right side */
+    top: 50%;
+    right: 3%;
     transform: translateY(-50%);
   }
 
   .sticky-nav ul li {
-    margin-bottom: 10px;     /* smaller spacing between squares */
+    margin-bottom: 10px;
   }
 
-  .sticky-nav ul li a .square {
-    width: 12px;             /* smaller square size */
+  .nav-dot .square {
+    width: 12px;
     height: 12px;
   }
 
-  .sticky-nav ul li a[href^="#"]:hover {
-    transform: scale(1.2);    /* slightly bigger hover effect for small squares */
+  .nav-dot:hover {
+    transform: scale(1.2);
   }
 }

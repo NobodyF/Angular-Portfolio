@@ -8,6 +8,7 @@ body {
   position: relative;
   width: 100%;
   height: 100vh; /* Adjust the height to cover half of the viewport */
+  display: flow-root; /* BFC: stop child margins collapsing through and pushing the page down */
 }
 
 .right-square, .left-square {
@@ -71,6 +72,16 @@ body {
 #wrapper {
   position: relative;
   height: 100%; /* Ensure the wrapper fills the entire height of .home-container */
+  /* The overlay header no longer occupies flow space; restore the offset it
+     used to create so the hero content and social icons sit where they did. */
+  padding-top: 131px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  #wrapper {
+    padding-top: 62px; /* matches the old mobile header height */
+  }
 }
 
 
@@ -82,7 +93,11 @@ body::-webkit-scrollbar {
 }
 
 html, body {
-  overflow: auto; /* Ensures scrolling is enabled */
+  /* Vertical scrolling only — horizontal overflow (oversized decorative SVGs)
+     must be clipped, otherwise the mobile layout viewport widens and
+     position:fixed elements (hamburger, nav dots) end up off-screen. */
+  overflow-x: hidden;
+  overflow-y: auto;
   scroll-behavior: smooth; /* Enables smooth scrolling */
 }
 

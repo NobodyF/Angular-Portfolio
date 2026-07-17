@@ -1,0 +1,28 @@
+<div id="stack" class="section">
+  <div class="container">
+    <div class="title">
+      <h1>What I work with</h1>
+    </div>
+
+    <div class="stack-intro">
+      <p>
+        Today I build GenAI systems — retrieval-augmented generation, LLM agents, and
+        Azure OpenAI-powered services for enterprise use cases — alongside computer vision
+        work with YOLO (v8–v10) for drone-based detection.
+      </p>
+      <p>
+        Earlier in my career I shipped Ethereum smart contracts and dApps with Solidity
+        and Hardhat, and full-stack web applications with Angular and Django.
+      </p>
+    </div>
+
+    <div class="stack-groups">
+      <div class="stack-group" *ngFor="let group of groups">
+        <h2>{{ group.label }}</h2>
+        <ul class="badges">
+          <li class="badge" *ngFor="let item of group.items">{{ item }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

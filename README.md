@@ -1,27 +1,28 @@
-# LatestAppWithModule
+# Angular-Portfolio
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+Personal portfolio site of Nikita Jakimovs — AI/ML engineer working on GenAI (RAG, LLM agents, Azure OpenAI) and computer vision (YOLO).
 
-## Development server
+Live site: https://nobodyf.github.io/Angular-Portfolio/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Stack
 
-## Code scaffolding
+- Angular 17 (NgModule-based, prerendered static output)
+- Deployed to GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Development
 
-## Build
+```bash
+npm install
+npm start          # dev server at http://localhost:4200/
+npm test           # unit tests (Karma)
+npm run build      # production build to dist/latest-app-with-module/browser
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Deployment
 
-## Running unit tests
+Pushing to `main` triggers the **Deploy to GitHub Pages** workflow, which builds the app
+and publishes `dist/latest-app-with-module/browser` to GitHub Pages. No manual `gh-pages`
+branch pushes are needed.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> Note: GitHub Pages must be configured to deploy from **GitHub Actions**
+> (Settings → Pages → Source), not from the `gh-pages` branch.

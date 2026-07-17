@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';  // Add HttpClientModule and withFetch
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutMeComponent } from './about-me/about-me.component';
@@ -8,10 +7,11 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ContactComponent } from './contact/contact.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { TechStackComponent } from './tech-stack/tech-stack.component';
 import { StickyNavComponent } from './sticky-nav/sticky-nav.component';
 import { HyperTextComponent } from './hyper-text/hyper-text.component';
-import { FormsModule } from '@angular/forms';  // <-- Add this import
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,16 +21,16 @@ import { FormsModule } from '@angular/forms';  // <-- Add this import
     ContactComponent,
     HeaderComponent,
     HomeComponent,
+    MainPageComponent,
+    TechStackComponent,
     StickyNavComponent,
     HyperTextComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,  // Add HttpClientModule
     FormsModule
   ],
-  providers: [provideHttpClient(withFetch())],  // Enable Fetch API
   bootstrap: [AppComponent]
 })
 export class AppModule { }

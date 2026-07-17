@@ -1,9 +1,28 @@
-<div id="header" class="container"></div>
 <header>
   <div class="header-container">
-    <img class="nicksvg" src="assets/nicksvg.svg" alt="Nick SVG">
-    <nav class="header-nav">
-
-    </nav>
+    <a routerLink="/" class="logo-link" aria-label="Go to home page">
+      <img class="nicksvg" src="assets/nicksvg.svg" alt="Nikita Jakimovs logo">
+    </a>
   </div>
 </header>
+
+<button
+  class="menu-toggle"
+  type="button"
+  aria-label="Open navigation menu"
+  [attr.aria-expanded]="menuOpen"
+  aria-controls="site-menu"
+  (click)="toggleMenu($event)">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</button>
+
+<nav id="site-menu" class="dropdown-menu" [class.open]="menuOpen" aria-label="Site navigation">
+  <ul>
+    <li><a (click)="goTo('home', $event)" href="#">Home</a></li>
+    <li><a (click)="goTo('about', $event)" href="#">About</a></li>
+    <li><a routerLink="/projects" (click)="closeMenu()">Projects</a></li>
+    <li><a (click)="goTo('contact', $event)" href="#">Contact</a></li>
+  </ul>
+</nav>

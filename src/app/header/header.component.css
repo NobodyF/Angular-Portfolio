@@ -1,88 +1,146 @@
 header {
-    position: sticky;
-    width: 62%;
-    color: #ffffff; /* White text color */
-    padding: 40px;
-    z-index: 1000; /* Ensure the header is above other content */
-  }
-  
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 62%;
+  color: #ffffff;
+  padding: 40px;
+  z-index: 1000;
+}
 
-  li {
-    margin: 0;
-    font-size: 23px;
-  }
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  
-  h1 {
-    margin: 0;
-    font-size: 40px;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin-right: 20px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-  
-  nav ul li a:hover {
-    color: #ccf381; /* Yellow text color on hover */
-  }
-  
-  .nicksvg {
-    width: 150px; /* Adjust the size as needed */
-    height: auto; /* Maintain aspect ratio */
-  }
-  
+.logo-link {
+  display: inline-block;
+  line-height: 0;
+}
+
+.nicksvg {
+  width: 150px;
+  height: auto;
+}
+
+/* === Hamburger toggle === */
+.menu-toggle {
+  position: fixed;
+  top: 28px;
+  right: 28px;
+  z-index: 1200;
+  width: 48px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background-color: #313743;
+  border: 2px solid #ccf381;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.05);
+}
+
+.menu-toggle:focus-visible {
+  outline: 3px solid #ccf381;
+  outline-offset: 2px;
+}
+
+.menu-toggle .bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #ccf381;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* === Dropdown panel === */
+.dropdown-menu {
+  position: fixed;
+  top: 84px;
+  right: 28px;
+  z-index: 1190;
+  min-width: 200px;
+  background-color: #313743;
+  border: 2px solid #ccf381;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(-8px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+.dropdown-menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dropdown-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 12px 24px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.dropdown-menu li a:hover,
+.dropdown-menu li a:focus-visible {
+  color: #ccf381;
+  background-color: rgba(204, 243, 129, 0.08);
+  outline: none;
+}
 
 @media (max-width: 768px) {
   header {
-    width: 90%;               /* fit smaller screens */
-    padding: 15px 10px;       /* reduce padding */
-  }
-
-  .header-container {
-    flex-direction: row;      /* keep logo and nav in a row */
-    justify-content: space-between; /* logo left, nav right */
-    align-items: center;
+    width: 90%;
+    padding: 15px 10px;
   }
 
   .nicksvg {
-    width: 100px;             /* smaller logo */
-    height: auto;
+    width: 100px;
   }
 
-  nav ul {
-    display: flex;             /* horizontal layout */
-    gap: 10px;                 /* reduce space between nav items */
+  .menu-toggle {
+    top: 16px;
+    right: 16px;
   }
 
-  nav ul li {
-    display: inline;
-    margin: 0;                 /* remove extra margin */
-  }
-
-  nav ul li a {
-    font-size: 14px;           /* smaller text */
-  }
-
-  h1 {
-    font-size: 28px;           /* smaller header if used inside header */
+  .dropdown-menu {
+    top: 70px;
+    right: 16px;
   }
 }

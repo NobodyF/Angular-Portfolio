@@ -175,6 +175,12 @@
     font-size: clamp(14px, 4vw, 24px);
     margin-left: 20px;
     margin-top: 20px;
+    max-width: 55%; /* keep the tagline clear of the profile photo */
+  }
+
+  /* Let the tagline wrap naturally on narrow screens */
+  #home .content p br {
+    display: none;
   }
 
   .main-image {

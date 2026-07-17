@@ -1,98 +1,182 @@
-#projects {
-  position: relative; /* Enables absolute positioning of the SVG */
+.projects-page {
   background-color: #313743;
-  font-family: 'Cavalier', sans-serif; /* Set the base font for the entire document */
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Aligns items to the start of the flex container */
-  padding: 0 12vw; /* Adds some space around the content */
-  height: 100vh;
+  min-height: 100vh;
+  padding: 140px 8vw 80px;
+  box-sizing: border-box;
+  color: #ffffff;
 }
 
-.section {
-  color: #FFFFFF;
-  font-family: inherit; /* Inherit the font from body */
-  padding: 50px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.container {
-  max-width: 600px; /* Restricts the width of the text container */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 20;
-  align-items: flex-start; /* Aligns text to the left */
-  z-index: 1; /* Ensures text is above the SVG */
-  margin-right: auto; /* Aligns container to the left side */
+.projects-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 h1 {
   font-size: 48px;
-  margin-bottom: 24px;
+  color: #ccf381;
+  margin: 0 0 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0 0 30px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+/* === Filter tabs === */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.filter-tab {
+  padding: 8px 18px;
+  border: 2px solid #ccf381;
+  border-radius: 999px;
+  background: transparent;
+  color: #ccf381;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-tab:hover {
+  background-color: rgba(204, 243, 129, 0.15);
+}
+
+.filter-tab.active {
+  background-color: #ccf381;
+  color: #313743;
+}
+
+.filter-tab:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* === Card grid === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: #3b4250;
+  border: 1px solid rgba(204, 243, 129, 0.25);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.card-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  background: linear-gradient(135deg, #313743 0%, #4831d4 100%);
+}
+
+.card-thumb[data-category="GenAI-LLM"] {
+  background: linear-gradient(135deg, #4831d4 0%, #313743 100%);
+}
+
+.card-thumb[data-category="Computer Vision"] {
+  background: linear-gradient(135deg, #313743 0%, #2b6349 100%);
+}
+
+.card-thumb[data-category="Web3"] {
+  background: linear-gradient(135deg, #313743 0%, #6b6f2b 100%);
+}
+
+.card-icon {
+  font-size: 48px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 20px 20px;
+}
+
+.card-body h2 {
+  font-size: 22px;
+  color: #ccf381;
+  margin: 0 0 8px;
+}
+
+.card-body p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0 0 16px;
+  flex: 1;
+}
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 14px;
+  padding: 0;
+}
+
+.tag {
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  padding: 4px 10px;
+  border: 1px solid #ccf381;
+  border-radius: 999px;
   color: #ccf381;
 }
 
-p {
-  font-size: 18px;
-  max-width: 90%; /* Allows the text to take full width of the container */
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.title {
-  font-size: 38px;
+.card-link {
+  font-size: 15px;
   font-weight: bold;
+  color: #ccf381;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.blocksvg {
-  position: absolute;
-  width: 1400px;
-  height: 1400px;
-
-  right: 5vw; /* Adjusts the distance from the right */
-  opacity: 1; /* Makes the SVG less intrusive */
-  z-index: 0; /* Ensures SVG is behind the text */
+.card-link:hover,
+.card-link:focus-visible {
+  text-decoration: underline;
+  outline: none;
 }
-/* === MOBILE RESPONSIVE ONLY === */
+
+.card-link.private {
+  color: #9aa1ad;
+  cursor: default;
+}
+
+/* === Mobile === */
 @media (max-width: 768px) {
-  #projects {
-    padding: 20px 5vw;
-    min-height: auto;
-    position: relative; /* keep relative for SVG absolute positioning */
+  .projects-page {
+    padding: 110px 5vw 50px;
   }
 
-  /* Shrink text container more */
-  .container {
-    max-width: 50%;       /* text stays left but small enough */
-  }
-
-  /* Shrink headings */
   h1 {
-    font-size: clamp(11px, 2vw, 30px);
+    font-size: clamp(28px, 8vw, 40px);
   }
 
-  .title {
-    font-size: clamp(11px, 3vw, 30px);
+  .subtitle {
+    font-size: clamp(14px, 4vw, 18px);
   }
 
-  p {
-    font-size: clamp(11px, 2vw, 30px);
-    line-height: 1.3;
-  }
-
-  /* SVG: keep absolute, scale, right-aligned, vertically centered with content */
-  .blocksvg {
-    position: absolute;     /* like desktop */
-    width: 140vw;            /* make it large */
-    max-width: 1400px;       /* limit so it fits mobile */
-    height: auto;
-    right: -20vw;             /* same side as desktop */
-    top: 49%;               /* vertically center */
-    transform: translateY(-50%); /* true vertical center */
-    z-index: 0;
+  .card-grid {
+    grid-template-columns: 1fr;
   }
 }

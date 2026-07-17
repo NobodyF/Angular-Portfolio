@@ -1,34 +1,45 @@
-<div id="projects" class="section">
-  <img class="blocksvg" src="assets/ETHSVGG.svg" alt="block SVG">
+<div id="projects" class="projects-page">
+  <div class="projects-container">
+    <h1>Projects</h1>
+    <p class="subtitle">A selection of my work across GenAI, computer vision, and Web3.</p>
 
-  <div class="container">
-    <div class="title">
-      <h1>Throughout my career,</h1>
+    <div class="filter-tabs" role="group" aria-label="Filter projects by category">
+      <button
+        *ngFor="let category of categories"
+        type="button"
+        class="filter-tab"
+        [class.active]="category === activeCategory"
+        [attr.aria-pressed]="category === activeCategory"
+        (click)="setCategory(category)">
+        {{ category }}
+      </button>
     </div>
-<div class="projects">
-  <p>
-    I have developed a diverse range of products,
-    including AI training systems, blockchain solutions on Ethereum, and various web applications.
-  </p>
-  <p>
-    Over the past year, I have specialized in training drone-based computer vision systems using YOLO (v8 through v10),
-    developing and fine-tuning three production-ready models for autonomous drone applications.
-  </p>
-  <p>
-    Currently, I specialize in crafting and optimizing blockchain products, leveraging my expertise
-    in Ethereum to build secure and scalable decentralized applications.
-  </p>
-  <p>
-    In addition to my blockchain work, I have experience in designing and implementing intuitive user interfaces, 
-    applying UI/UX principles. My proficiency in JavaScript, along with frameworks such as Angular, enhances my ability 
-    to build responsive and dynamic front-end solutions.
-  </p>
-  <p>
-    My technical skills extend to Python and Django, enabling me to create robust back-end systems that support a wide
-    range of functionalities.
-  </p>
-  <p>
-    Whether working independently or as part of a team, I am dedicated to delivering high-quality
-    software that drives business success and meets the evolving needs of the digital landscape.
-  </p>
+
+    <div class="card-grid">
+      <article class="card" *ngFor="let project of filteredProjects">
+        <div class="card-thumb" [attr.data-category]="project.category" aria-hidden="true">
+          <span class="card-icon">{{ project.icon }}</span>
+        </div>
+        <div class="card-body">
+          <h2>{{ project.title }}</h2>
+          <p>{{ project.description }}</p>
+          <ul class="tags">
+            <li class="tag" *ngFor="let tag of project.tags">{{ tag }}</li>
+          </ul>
+          <a
+            *ngIf="project.repoUrl; else privateRepo"
+            class="card-link"
+            [href]="project.repoUrl"
+            target="_blank"
+            rel="noopener"
+            [attr.aria-label]="'View ' + project.title + ' on GitHub'">
+            View on GitHub →
+          </a>
+          <ng-template #privateRepo>
+            <span class="card-link private">Private repo</span>
+          </ng-template>
+        </div>
+      </article>
+    </div>
+  </div>
 </div>
