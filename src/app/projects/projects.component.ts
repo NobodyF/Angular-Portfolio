@@ -27,7 +27,7 @@ export class ProjectsComponent {
       category: 'GenAI-LLM',
       tags: ['Python', 'LLM Agents', 'CLI'],
       repoUrl: null,
-      icon: '🤖'
+      icon: 'assets/icons/docdrift.svg'
     },
     {
       title: 'AI PR Enricher',
@@ -35,7 +35,7 @@ export class ProjectsComponent {
       category: 'GenAI-LLM',
       tags: ['Python', 'Azure OpenAI', 'GitHub API'],
       repoUrl: null,
-      icon: '🧠'
+      icon: 'assets/icons/pr-enricher.svg'
     },
     {
       title: 'AI-TRAIN',
@@ -43,7 +43,7 @@ export class ProjectsComponent {
       category: 'Computer Vision',
       tags: ['Python', 'YOLOv8', 'PyTorch'],
       repoUrl: 'https://github.com/NobodyF/AI-TRAIN',
-      icon: '🚁'
+      icon: 'assets/icons/ai-train.svg'
     },
     {
       title: 'Leaf Detector',
@@ -51,7 +51,7 @@ export class ProjectsComponent {
       category: 'Computer Vision',
       tags: ['Python', 'YOLO', 'Annotation'],
       repoUrl: 'https://github.com/NobodyF/leaf_detector',
-      icon: '🍃'
+      icon: 'assets/icons/leaf-detector.svg'
     },
     {
       title: 'WEB3-PlantHyb',
@@ -59,7 +59,7 @@ export class ProjectsComponent {
       category: 'Web3',
       tags: ['Solidity', 'Hardhat', 'Django'],
       repoUrl: 'https://github.com/NobodyF/WEB3-PlantHyb',
-      icon: '🌿'
+      icon: 'assets/icons/planthyb.svg'
     },
     {
       title: 'Web3 Documents',
@@ -67,7 +67,7 @@ export class ProjectsComponent {
       category: 'Web3',
       tags: ['Solidity', 'Django', 'Ethereum'],
       repoUrl: 'https://github.com/NobodyF/web3_documents',
-      icon: '📄'
+      icon: 'assets/icons/web3-docs.svg'
     },
     {
       title: 'Allergen Scanner',
@@ -75,7 +75,7 @@ export class ProjectsComponent {
       category: 'Other',
       tags: ['Kotlin', 'TensorFlow Lite', 'ML Kit'],
       repoUrl: 'https://github.com/NobodyF/AllergenScanner',
-      icon: '📱'
+      icon: 'assets/icons/allergen-scanner.svg'
     }
   ];
 

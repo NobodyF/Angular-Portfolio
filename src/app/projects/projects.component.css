@@ -4,11 +4,34 @@
   padding: 140px 8vw 80px;
   box-sizing: border-box;
   color: #ffffff;
+  position: relative;
+  overflow: hidden; /* keep decorative graphics from causing scrollbars */
+}
+
+/* === Background decorations (site motifs) === */
+.deco-net {
+  position: absolute;
+  top: -60px;
+  right: -120px;
+  width: 620px;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.deco-dots {
+  position: absolute;
+  bottom: 40px;
+  left: -80px;
+  width: 420px;
+  opacity: 0.35;
+  pointer-events: none;
 }
 
 .projects-container {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 h1 {
@@ -102,7 +125,8 @@ h1 {
 }
 
 .card-icon {
-  font-size: 48px;
+  width: 72px;
+  height: 72px;
 }
 
 .card-body {

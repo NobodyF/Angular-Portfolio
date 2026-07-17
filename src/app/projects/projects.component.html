@@ -1,4 +1,6 @@
 <div id="projects" class="projects-page">
+  <img class="deco-net" src="assets/aisvg.svg" alt="" aria-hidden="true">
+  <img class="deco-dots" src="assets/dotsvg.svg" alt="" aria-hidden="true">
   <div class="projects-container">
     <h1>Projects</h1>
     <p class="subtitle">A selection of my work across GenAI, computer vision, and Web3.</p>
@@ -18,7 +20,7 @@
     <div class="card-grid">
       <article class="card" *ngFor="let project of filteredProjects">
         <div class="card-thumb" [attr.data-category]="project.category" aria-hidden="true">
-          <span class="card-icon">{{ project.icon }}</span>
+          <img class="card-icon" [src]="project.icon" alt="">
         </div>
         <div class="card-body">
           <h2>{{ project.title }}</h2>
