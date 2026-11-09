@@ -2,7 +2,7 @@
     overflow: hidden;
     display: flex;
     cursor: default;
-    font-family: 'Courier New', Courier, monospace; /* or any other mono font */
+    font-family: var(--font-mono);
   }
   
   .space {

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:4200/)",
+      "Bash(cmd.exe //c start \"\" \"http://localhost:4200/\")"
+    ]
+  }
+}

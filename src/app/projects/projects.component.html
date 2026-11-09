@@ -2,6 +2,7 @@
   <img class="deco-net" src="assets/aisvg.svg" alt="" aria-hidden="true">
   <img class="deco-dots" src="assets/dotsvg.svg" alt="" aria-hidden="true">
   <div class="projects-container">
+    <a routerLink="/" class="back-link"><span aria-hidden="true">←</span> Back to home</a>
     <h1>Projects</h1>
     <p class="subtitle">A selection of my work across GenAI, computer vision, and Web3.</p>
 
@@ -13,12 +14,12 @@
         [class.active]="category === activeCategory"
         [attr.aria-pressed]="category === activeCategory"
         (click)="setCategory(category)">
-        {{ category }}
+        {{ category }} <span class="count">{{ countFor(category) }}</span>
       </button>
     </div>
 
     <div class="card-grid">
-      <article class="card" *ngFor="let project of filteredProjects">
+      <article class="card" *ngFor="let project of filteredProjects" [class.is-link]="!!project.repoUrl">
         <div class="card-thumb" [attr.data-category]="project.category" aria-hidden="true">
           <img class="card-icon" [src]="project.icon" alt="">
         </div>
@@ -28,6 +29,7 @@
           <ul class="tags">
             <li class="tag" *ngFor="let tag of project.tags">{{ tag }}</li>
           </ul>
+          <!-- The link's ::after stretches over the whole card, making the card clickable -->
           <a
             *ngIf="project.repoUrl; else privateRepo"
             class="card-link"
@@ -35,7 +37,7 @@
             target="_blank"
             rel="noopener"
             [attr.aria-label]="'View ' + project.title + ' on GitHub'">
-            View on GitHub →
+            View on GitHub <span aria-hidden="true">→</span>
           </a>
           <ng-template #privateRepo>
             <span class="card-link private">Private repo</span>
@@ -45,3 +47,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

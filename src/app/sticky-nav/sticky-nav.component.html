@@ -1,12 +1,15 @@
-<nav class="sticky-nav" aria-label="Section navigation">
+<nav class="sticky-nav" [class.on-dark]="onDark" aria-label="Section navigation">
   <ul>
-    <li *ngFor="let section of sections">
+    <li *ngFor="let section of sections; let i = index">
       <button
         type="button"
         class="nav-dot"
-        [attr.aria-label]="'Scroll to ' + section + ' section'"
-        (click)="scrollToSection(section)">
-        <div class="square" [ngStyle]="{ 'background-color': activeColor }"></div>
+        [class.active]="i === activeIndex"
+        [attr.aria-label]="'Scroll to ' + section.label"
+        [attr.aria-current]="i === activeIndex ? 'true' : null"
+        (click)="scrollToSection(i)">
+        <span class="dot-label" aria-hidden="true">{{ section.label }}</span>
+        <span class="square"></span>
       </button>
     </li>
   </ul>

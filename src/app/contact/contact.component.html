@@ -1,58 +1,42 @@
-<div id="contact" class="section">
-  <h1>Let's stay in touch.</h1>
-  <div class="contact-form-container">
-    <form (ngSubmit)="openMailClient(contactForm.value)"
-          #contactForm="ngForm"
-          class="contact-form">
+<section id="contact" class="section">
+  <img class="contact-lines" src="assets/linesvg.svg" alt="" aria-hidden="true">
+
+  <div class="contact-inner">
+    <h1>Let's stay in touch.</h1>
+    <p class="lead">Have a project, a role, or a question about GenAI or computer vision? Send me a message.</p>
+
+    <form (ngSubmit)="openMailClient(contactForm.value)" #contactForm="ngForm" class="contact-form">
       <div class="form-row">
         <div class="form-group">
-          <label for="name">Your Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            ngModel
-            placeholder="Fill your name"
-            required
-          />
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" ngModel placeholder="Your name" autocomplete="name" required />
         </div>
         <div class="form-group">
-          <label for="email">Your Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            ngModel
-            placeholder="Fill your email"
-            required
-          />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" ngModel placeholder="you@example.com" autocomplete="email" required email />
         </div>
       </div>
       <div class="form-group">
         <label for="subject">Subject</label>
-        <input
-          type="text"
-          id="subject"
-          name="subject"
-          ngModel
-          placeholder="Subject"
-          required
-        />
+        <input type="text" id="subject" name="subject" ngModel placeholder="What's it about?" required />
       </div>
       <div class="form-group">
-        <label for="message">Your Message</label>
-        <textarea
-          id="message"
-          name="message"
-          ngModel
-          rows="4"
-          placeholder="Write your message here"
-          required
-        ></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" ngModel rows="4" placeholder="Write your message here" required></textarea>
       </div>
-      <button type="submit" [disabled]="contactForm.invalid">
-        Send via Mail App
-      </button>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn--dark" [disabled]="contactForm.invalid">
+          Send via mail app <span aria-hidden="true">→</span>
+        </button>
+        <p class="direct">
+          Or email me directly:
+          <a [href]="'mailto:' + email" class="email-link">{{ email }}</a>
+          <button type="button" class="copy-btn" (click)="copyEmail()" [attr.aria-label]="'Copy email address'">
+            {{ copied ? 'Copied!' : 'Copy' }}
+          </button>
+        </p>
+      </div>
     </form>
   </div>
-</div>
+</section>

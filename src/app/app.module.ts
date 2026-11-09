@@ -11,6 +11,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { TechStackComponent } from './tech-stack/tech-stack.component';
 import { StickyNavComponent } from './sticky-nav/sticky-nav.component';
 import { HyperTextComponent } from './hyper-text/hyper-text.component';
+import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     MainPageComponent,
     TechStackComponent,
     StickyNavComponent,
-    HyperTextComponent
+    HyperTextComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

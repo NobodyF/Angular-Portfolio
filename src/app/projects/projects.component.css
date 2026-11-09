@@ -1,5 +1,5 @@
 .projects-page {
-  background-color: #313743;
+  background-color: var(--slate);
   min-height: 100vh;
   padding: 140px 8vw 80px;
   box-sizing: border-box;
@@ -34,17 +34,34 @@
   z-index: 1;
 }
 
+.back-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--on-dark-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  color: var(--accent);
+  outline: none;
+}
+
 h1 {
   font-size: 48px;
-  color: #ccf381;
+  font-weight: 800;
+  color: var(--accent);
   margin: 0 0 10px;
 }
 
 .subtitle {
   font-size: 18px;
-  color: #ffffff;
+  color: var(--on-dark-muted);
   margin: 0 0 30px;
-  font-family: 'Courier New', Courier, monospace;
 }
 
 /* === Filter tabs === */
@@ -57,24 +74,38 @@ h1 {
 
 .filter-tab {
   padding: 8px 18px;
-  border: 2px solid #ccf381;
+  border: 2px solid var(--accent);
   border-radius: 999px;
   background: transparent;
-  color: #ccf381;
+  color: var(--accent);
   font-size: 15px;
   font-weight: bold;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .filter-tab:hover {
-  background-color: rgba(204, 243, 129, 0.15);
+  background-color: rgba(var(--accent-rgb), 0.15);
 }
 
 .filter-tab.active {
-  background-color: #ccf381;
-  color: #313743;
+  background-color: var(--accent);
+  color: var(--slate);
+}
+
+.count {
+  display: inline-block;
+  min-width: 1.4em;
+  margin-left: 6px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  background-color: rgba(var(--accent-rgb), 0.15);
+}
+
+.filter-tab.active .count {
+  background-color: rgba(49, 55, 67, 0.18);
 }
 
 .filter-tab:focus-visible {
@@ -90,18 +121,25 @@ h1 {
 }
 
 .card {
+  position: relative; /* anchor for the stretched card link */
   display: flex;
   flex-direction: column;
-  background-color: #3b4250;
-  border: 1px solid rgba(204, 243, 129, 0.25);
+  background-color: var(--slate-2);
+  border: 1px solid rgba(var(--accent-rgb), 0.25);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card:hover {
+.card.is-link {
+  cursor: pointer;
+}
+
+.card.is-link:hover,
+.card.is-link:focus-within {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  border-color: rgba(var(--accent-rgb), 0.6);
 }
 
 .card-thumb {
@@ -109,19 +147,19 @@ h1 {
   align-items: center;
   justify-content: center;
   height: 120px;
-  background: linear-gradient(135deg, #313743 0%, #4831d4 100%);
+  background: linear-gradient(135deg, var(--slate) 0%, #4831d4 100%);
 }
 
 .card-thumb[data-category="GenAI-LLM"] {
-  background: linear-gradient(135deg, #4831d4 0%, #313743 100%);
+  background: linear-gradient(135deg, #4831d4 0%, var(--slate) 100%);
 }
 
 .card-thumb[data-category="Computer Vision"] {
-  background: linear-gradient(135deg, #313743 0%, #2b6349 100%);
+  background: linear-gradient(135deg, var(--slate) 0%, #2b6349 100%);
 }
 
 .card-thumb[data-category="Web3"] {
-  background: linear-gradient(135deg, #313743 0%, #6b6f2b 100%);
+  background: linear-gradient(135deg, var(--slate) 0%, #6b6f2b 100%);
 }
 
 .card-icon {
@@ -138,13 +176,14 @@ h1 {
 
 .card-body h2 {
   font-size: 22px;
-  color: #ccf381;
+  color: var(--accent);
   margin: 0 0 8px;
 }
 
 .card-body p {
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.55;
+  color: var(--on-dark-muted);
   margin: 0 0 16px;
   flex: 1;
 }
@@ -160,25 +199,44 @@ h1 {
 
 .tag {
   font-size: 12px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
   padding: 4px 10px;
-  border: 1px solid #ccf381;
+  border: 1px solid var(--accent);
   border-radius: 999px;
-  color: #ccf381;
+  color: var(--accent);
 }
 
 .card-link {
   font-size: 15px;
   font-weight: bold;
-  color: #ccf381;
+  color: var(--accent);
   text-decoration: none;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono);
 }
 
-.card-link:hover,
-.card-link:focus-visible {
+/* Stretch the link over the entire card */
+.card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+}
+
+.card-link.private::after {
+  content: none;
+}
+
+.card.is-link:hover .card-link {
   text-decoration: underline;
+}
+
+.card-link:focus-visible {
   outline: none;
+}
+
+.card-link:focus-visible::after {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px; /* inset: the card clips overflow */
 }
 
 .card-link.private {

@@ -1,24 +1,35 @@
-<div id="about">
-  <!-- SVG Decorative Element -->
+<section id="about">
   <img class="dotsvg" src="assets/dotsvg.svg" alt="" aria-hidden="true">
 
-  <!-- Left-side Text -->
-  <div class="left-text">
-    <h1>About Me</h1>
-    <h2>My name is Nikita, and I am an AI/ML engineer. I build GenAI systems — RAG pipelines,
-      LLM integrations, and agentic workflows — and train computer vision models with YOLO.
-      Feel free to explore my work on GitHub!
-    </h2>
-  </div>
+  <div class="about-grid">
+    <div class="about-intro">
+      <h1>About Me</h1>
+      <p>
+        My name is Nikita, and I am an AI/ML engineer. I build GenAI systems — RAG pipelines,
+        LLM integrations, and agentic workflows — and train computer vision models with YOLO.
+      </p>
+      <a routerLink="/projects" class="text-link">Explore my projects <span aria-hidden="true">→</span></a>
+    </div>
 
-  <!-- Right-side Text -->
-  <div class="right-text">
-    <h1>Experience</h1>
-    <h2>
-      I currently work on enterprise GenAI solutions built on Azure OpenAI, with Python,
-      LangChain, and FastAPI. Before that I trained drone-based computer vision models,
-      and my earlier background covers full-stack web (Angular, TypeScript) and
-      blockchain development with Solidity.
-    </h2>
+    <div class="about-experience">
+      <h2>Experience</h2>
+      <ol class="timeline">
+        <li>
+          <span class="when">Now</span>
+          <h3>GenAI engineering</h3>
+          <p>Enterprise GenAI on Azure OpenAI — RAG, LLM integrations, and agentic pipelines with Python, LangChain, and FastAPI.</p>
+        </li>
+        <li>
+          <span class="when">Before</span>
+          <h3>Computer vision</h3>
+          <p>Trained and fine-tuned YOLO (v8–v10) models for drone-based object detection.</p>
+        </li>
+        <li>
+          <span class="when">Earlier</span>
+          <h3>Web3 &amp; full-stack</h3>
+          <p>Ethereum smart contracts with Solidity, and web apps with Angular and Django.</p>
+        </li>
+      </ol>
+    </div>
   </div>
-</div>
+</section>

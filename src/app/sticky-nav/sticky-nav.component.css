@@ -3,61 +3,90 @@
   top: 50%;
   right: 3%;
   transform: translateY(-50%);
+  z-index: 900;
 }
 
 .sticky-nav ul {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.sticky-nav ul li {
-  margin-bottom: 20px;
+.sticky-nav li {
+  margin-bottom: 18px;
 }
 
 .nav-dot {
+  position: relative;
+  display: block;
   background: none;
   border: none;
-  padding: 0;
+  padding: 2px;
   cursor: pointer;
-  display: block;
-  transition: transform 0.3s ease-in-out;
 }
 
-.nav-dot:hover {
-  transform: scale(1.1);
+/* Square marker: outlined when idle, filled when active */
+.square {
+  display: block;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 2px solid var(--slate);
+  background-color: transparent;
+  transition: background-color 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-dot.active .square {
+  background-color: var(--slate);
+  transform: scale(1.2);
+}
+
+.nav-dot:hover .square {
+  transform: scale(1.2);
+}
+
+/* Over the dark section, switch to lime */
+.on-dark .square { border-color: var(--accent); }
+.on-dark .nav-dot.active .square { background-color: var(--accent); }
+
+/* Hover label, slides in from the left */
+.dot-label {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translate(6px, -50%);
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: var(--slate);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.on-dark .dot-label {
+  background-color: var(--accent);
+  color: var(--slate);
+}
+
+.nav-dot:hover .dot-label,
+.nav-dot:focus-visible .dot-label {
+  opacity: 1;
+  transform: translate(0, -50%);
 }
 
 .nav-dot:focus-visible {
-  outline: 2px solid #ccf381;
+  outline: 2px solid var(--violet);
   outline-offset: 3px;
 }
 
-.nav-dot .square {
-  width: 20px;
-  height: 20px;
-  background-color: #4831d4;
-  border: 1px solid #f9f9f9;
-  position: relative;
-}
-
+/* Desktop-only: on phones the dots overlap content and the hamburger covers navigation */
 @media (max-width: 768px) {
   .sticky-nav {
-    top: 50%;
-    right: 3%;
-    transform: translateY(-50%);
-  }
-
-  .sticky-nav ul li {
-    margin-bottom: 10px;
-  }
-
-  .nav-dot .square {
-    width: 12px;
-    height: 12px;
-  }
-
-  .nav-dot:hover {
-    transform: scale(1.2);
+    display: none;
   }
 }

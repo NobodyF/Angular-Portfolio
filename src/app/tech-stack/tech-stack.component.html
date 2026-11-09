@@ -1,29 +1,88 @@
-<div id="stack" class="section">
-  <img class="aisvg" src="assets/aisvg.svg" alt="" aria-hidden="true">
-  <div class="container">
-    <div class="title">
-      <h1>What I work with</h1>
-    </div>
+<section id="stack" class="section">
+  <div class="stack-layout">
+    <div class="stack-copy">
+      <p class="eyebrow">What I work with</p>
+      <h1 aria-label="I make it WORK.">
+        <span aria-hidden="true">I make it
+          <span class="work"><app-hyper-text [text]="'WORK'" [duration]="900" [animateOnView]="true"></app-hyper-text></span>.
+        </span>
+      </h1>
 
-    <div class="stack-intro">
-      <p>
-        Today I build GenAI systems — retrieval-augmented generation, LLM agents, and
-        Azure OpenAI-powered services for enterprise use cases — alongside computer vision
-        work with YOLO (v8–v10) for drone-based detection.
+      <p class="lead">
+        Models are easy to demo and hard to ship. I take GenAI and computer vision from
+        prototype to production — retrieval pipelines, LLM agents, and YOLO detectors that
+        hold up outside the notebook.
       </p>
-      <p>
-        Earlier in my career I shipped Ethereum smart contracts and dApps with Solidity
-        and Hardhat, and full-stack web applications with Angular and Django.
-      </p>
-    </div>
 
-    <div class="stack-groups">
-      <div class="stack-group" *ngFor="let group of groups">
-        <h2>{{ group.label }}</h2>
-        <ul class="badges">
-          <li class="badge" *ngFor="let item of group.items">{{ item }}</li>
-        </ul>
+      <div class="stack-groups">
+        <div class="stack-group" *ngFor="let group of groups">
+          <h2>{{ group.label }}</h2>
+          <ul class="badges">
+            <li class="badge" [class.badge--primary]="group.primary" *ngFor="let item of group.items">{{ item }}</li>
+          </ul>
+        </div>
       </div>
+
+      <p class="previously">
+        <span class="previously-label">Previously</span>
+        Web3 with {{ previously.join(', ') }}
+      </p>
     </div>
+
+    <!-- Animated network: inputs flow through the layers to what I build -->
+    <figure class="stack-art" aria-hidden="true">
+      <svg viewBox="0 0 1000 720" class="net">
+        <defs>
+          <filter id="stack-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- layer captions -->
+        <text *ngFor="let c of captions; let i = index" class="caption"
+              [attr.x]="layerX[i]" y="62" text-anchor="middle">{{ c }}</text>
+
+        <!-- faint full mesh -->
+        <g class="mesh">
+          <line *ngFor="let e of edges" [attr.x1]="e.x1" [attr.y1]="e.y1" [attr.x2]="e.x2" [attr.y2]="e.y2"/>
+        </g>
+
+        <!-- highlighted routes with flowing dashes + travelling signal -->
+        <g *ngFor="let r of routes; let i = index" class="route"
+           [class.dim]="isDimmed(i)" [class.lit]="hovered === i" [style.--c]="r.color">
+          <path class="route-glow" [attr.d]="r.d"/>
+          <path class="route-line" [attr.d]="r.d"/>
+          <circle *ngIf="motion" r="7" class="packet" filter="url(#stack-glow)">
+            <animateMotion dur="3.3s" repeatCount="indefinite" [attr.begin]="r.begin" [attr.path]="r.d"
+                           keyPoints="0;1" keyTimes="0;1" calcMode="linear"/>
+          </circle>
+        </g>
+
+        <!-- nodes -->
+        <g class="nodes">
+          <circle *ngFor="let n of nodes" class="node"
+                  [class.on]="routeOf(n) >= 0"
+                  [class.dim]="routeOf(n) >= 0 && isDimmed(routeOf(n))"
+                  [style.--c]="routeOf(n) >= 0 ? routes[routeOf(n)].color : null"
+                  [attr.cx]="n.x" [attr.cy]="n.y" r="13"/>
+        </g>
+
+        <!-- input labels -->
+        <text *ngFor="let label of inputs; let i = index" class="io-label in"
+              [attr.x]="inputNode(i).x - 28" [attr.y]="inputNode(i).y + 6" text-anchor="end">{{ label }}</text>
+
+        <!-- output labels (hover to isolate a route) -->
+        <g *ngFor="let r of routes; let i = index" class="out"
+           [class.dim]="isDimmed(i)" [style.--c]="r.color"
+           (mouseenter)="hovered = i" (mouseleave)="hovered = null">
+          <circle class="out-ring" [class.pulse]="motion" [style.animation-delay]="r.begin"
+                  [attr.cx]="outputNode(i).x" [attr.cy]="outputNode(i).y" r="24"/>
+          <text class="io-label out-label" [attr.x]="outputNode(i).x + 36" [attr.y]="outputNode(i).y + 7">{{ r.label }}</text>
+          <!-- generous invisible hit area -->
+          <rect class="hit" [attr.x]="outputNode(i).x - 30" [attr.y]="outputNode(i).y - 34" width="190" height="68"/>
+        </g>
+      </svg>
+    </figure>
   </div>
-</div>
+</section>

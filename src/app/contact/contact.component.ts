@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -6,22 +7,27 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
+  readonly email = 'proectgame@gmail.com';
+  copied = false;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   /**
-   * Build and open a `mailto:` URL so that the user’s default mail client
-   * (Outlook, Apple Mail, etc.) opens with pre-filled fields.
+   * Build and open a `mailto:` URL so the visitor's default mail client
+   * opens with the fields pre-filled.
    */
   openMailClient(form: { name: string; email: string; subject: string; message: string }) {
-    const to     = 'proectgame@gmail.com';  // <-- replace with your real address
-    const subject= encodeURIComponent(form.subject);
-    // Prepend the user’s own email so you can see their address in the body as well:
-    const body   = encodeURIComponent(
-      `From: ${form.name} <${form.email}>\n\n${form.message}`
-    );
+    const subject = encodeURIComponent(form.subject);
+    const body = encodeURIComponent(`From: ${form.name} <${form.email}>\n\n${form.message}`);
+    window.location.href = `mailto:${this.email}?subject=${subject}&body=${body}`;
+  }
 
-    // Construct mailto URL
-    const mailtoUrl = `mailto:${to}?subject=${subject}&body=${body}`;
-
-    // Trigger the mail client
-    window.location.href = mailtoUrl;
+  /** Fallback for visitors without a configured mail app. */
+  copyEmail() {
+    if (!isPlatformBrowser(this.platformId) || !navigator.clipboard) return;
+    navigator.clipboard.writeText(this.email).then(() => {
+      this.copied = true;
+      setTimeout(() => this.copied = false, 2000);
+    }).catch(() => { /* clipboard blocked — the address is still visible to copy manually */ });
   }
 }

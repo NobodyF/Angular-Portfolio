@@ -86,6 +86,12 @@ export class ProjectsComponent {
     return this.projects.filter(p => p.category === this.activeCategory);
   }
 
+  countFor(category: 'All' | ProjectCategory): number {
+    return category === 'All'
+      ? this.projects.length
+      : this.projects.filter(p => p.category === category).length;
+  }
+
   setCategory(category: 'All' | ProjectCategory) {
     this.activeCategory = category;
   }
