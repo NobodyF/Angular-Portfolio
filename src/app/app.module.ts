@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutMeComponent } from './about-me/about-me.component';
@@ -33,6 +33,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
+  // Angular 21+ defaults to zoneless; this app relies on zone.js change detection
+  // (scroll observers, timers, the scramble animation), so opt in explicitly.
+  providers: [provideZoneChangeDetection({ eventCoalescing: true })],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

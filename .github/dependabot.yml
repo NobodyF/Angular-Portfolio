@@ -1,0 +1,22 @@
+# Weekly dependency and GitHub Actions update PRs (security fixes arrive as PRs automatically)
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      angular:
+        patterns: ["@angular/*", "@angular-devkit/*", "zone.js", "typescript"]
+    ignore:
+      # Major Angular upgrades need `ng update` migrations, not a version bump
+      - dependency-name: "@angular/*"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@angular-devkit/*"
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <!--
+    Content Security Policy. GitHub Pages can't send response headers, so it lives here.
+    - Everything loads from this origin only (fonts are self-hosted via @fontsource).
+    - style-src needs 'unsafe-inline': Angular injects component styles as <style> tags
+      and static hosting can't issue per-request nonces. No inline scripts are allowed.
+    - frame-ancestors / X-Frame-Options can't be set from a meta tag (header-only).
+  -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Nikita Jakimovs | AI / ML Engineer</title>
   <meta name="description" content="Portfolio of Nikita Jakimovs — AI/ML engineer building GenAI systems, RAG pipelines, LLM agents, and computer vision models.">
   <!-- Local dev uses "/"; the Pages deploy workflow overrides with --base-href=/Angular-Portfolio/ -->
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <!-- Type: JetBrains Mono (headings, labels, UI) + Inter (body copy) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700;800&display=swap">
 </head>
 <body>
   <app-root></app-root>
