@@ -12,9 +12,10 @@ export interface Project {
 }
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css'],
+    standalone: false
 })
 export class ProjectsComponent {
   categories: Array<'All' | ProjectCategory> = ['All', 'GenAI-LLM', 'Computer Vision', 'Web3', 'Other'];

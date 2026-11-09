@@ -24,9 +24,10 @@ const TOP = 110;
 const BOTTOM = 650;
 
 @Component({
-  selector: 'app-tech-stack',
-  templateUrl: './tech-stack.component.html',
-  styleUrls: ['./tech-stack.component.css']
+    selector: 'app-tech-stack',
+    templateUrl: './tech-stack.component.html',
+    styleUrls: ['./tech-stack.component.css'],
+    standalone: false
 })
 export class TechStackComponent implements OnInit {
   groups: StackGroup[] = [

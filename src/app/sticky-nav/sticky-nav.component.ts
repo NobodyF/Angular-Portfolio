@@ -8,9 +8,10 @@ interface NavSection {
 }
 
 @Component({
-  selector: 'app-sticky-nav',
-  templateUrl: './sticky-nav.component.html',
-  styleUrls: ['./sticky-nav.component.css']
+    selector: 'app-sticky-nav',
+    templateUrl: './sticky-nav.component.html',
+    styleUrls: ['./sticky-nav.component.css'],
+    standalone: false
 })
 export class StickyNavComponent implements AfterViewInit, OnDestroy {
 

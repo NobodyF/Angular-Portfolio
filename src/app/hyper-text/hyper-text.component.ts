@@ -2,9 +2,10 @@ import { Component, Input, OnInit, OnDestroy, AfterViewInit, ElementRef, Inject,
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-hyper-text',
-  templateUrl: './hyper-text.component.html',
-  styleUrls: ['./hyper-text.component.css'],
+    selector: 'app-hyper-text',
+    templateUrl: './hyper-text.component.html',
+    styleUrls: ['./hyper-text.component.css'],
+    standalone: false
 })
 export class HyperTextComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() text: string = '';
